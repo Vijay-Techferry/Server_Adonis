@@ -8,9 +8,6 @@
 */
 
 import router from '@adonisjs/core/services/router'
+import { routeCollector } from './route_collector.js'
 
-router.get('/', async () => {
-  return {
-    hello: 'world',
-  }
-})
+routeCollector.map((route) => router.resource(route?.path, route?.controller))
