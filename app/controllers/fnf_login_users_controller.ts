@@ -7,7 +7,6 @@ export default class FnfLoginUsersController {
    */
   async index({ request }: HttpContext) {
     const fnfLoginUsers = await FnfLoginUser.all()
-    console.log(fnfLoginUsers, 'fnf')
     return fnfLoginUsers
   }
 
@@ -22,12 +21,10 @@ export default class FnfLoginUsersController {
   async store({ request, response }: HttpContext) {
     try {
       const user = new FnfLoginUser()
-      // console.log(request?.all())
       user.full_name = request.input('fullName')
       user.email = request.input('email')
       user.password = request.input('password')
       user.role_Id = request.input('roleId')
-      console.log(user, 'userrr')
       await user.save()
       return user
     } catch (e) {
@@ -39,8 +36,7 @@ export default class FnfLoginUsersController {
    * Show individual record
    */
   async show({ params }: HttpContext) {
-    const fnfLoginUser = await FnfLoginUser.findBy(params?.id)
-    console.log(fnfLoginUser, 'fnf')
+    const fnfLoginUser = await FnfLoginUser.find(params?.id)
     return fnfLoginUser
   }
 
