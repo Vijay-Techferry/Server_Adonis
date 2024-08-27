@@ -13,7 +13,19 @@ export default class FnfLoginUsersController {
   /**
    * Display form to create a new record
    */
-  async create({}: HttpContext) {}
+  async create({request,response}: HttpContext) {
+    // try {
+    //   const user = new FnfLoginUser()
+    //   user.full_name = request.input('fullName')
+    //   user.email = request.input('email')
+    //   user.password = request.input('password')
+    //   user.role_Id = request.input('roleId')
+    //   await user.save()
+    //   return user
+    // } catch (e) {
+    //   return response.badRequest(e)
+    // }
+  }
 
   /**
    * Handle form submission for the create action
@@ -21,10 +33,10 @@ export default class FnfLoginUsersController {
   async store({ request, response }: HttpContext) {
     try {
       const user = new FnfLoginUser()
-      user.full_name = request.input('fullName')
+      user.full_name = request.input('full_name')
       user.email = request.input('email')
       user.password = request.input('password')
-      user.role_Id = request.input('roleId')
+      user.role_Id = request.input('role_Id')
       await user.save()
       return user
     } catch (e) {
