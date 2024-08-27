@@ -34,7 +34,6 @@ export default class FnfLoginUser extends compose(BaseModel, AuthFinder) {
   // static accessTokens = DbAccessTokensProvider.forModel(FnfLoginUser)
   static accessTokens = DbAccessTokensProvider.forModel(FnfLoginUser, {
     expiresIn: '30 days',
-    prefix: 'bearer',
     table: 'auth_access_tokens',
     type: 'auth_token',
     tokenSecretLength: 40,

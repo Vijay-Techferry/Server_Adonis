@@ -7,7 +7,6 @@ export default class AuthController {
     try {
       const data = await request.validateUsing(registerValidator)
       const user = await FnfLoginUser.create(data)
-      console.log(user, 'registerUser')
       const token = await FnfLoginUser.accessTokens.create(user, ['*'])
       return {
         type: 'bearer',
